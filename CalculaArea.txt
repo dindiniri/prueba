@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract CalculaArea{
+    uint base;
+    uint altura;
+    uint area;
+    address creador = 0xf8A0E875F85fcBc9031a7Fbcc27c9dB52761Ff50;
+    address usuario = msg.sender;
+    
+    function DefineValores(uint b, uint a) public{
+        base = b;
+        altura = a;
+        require(base>10,"La base debe de ser mayor a 10");
+        area = (b*a)/2;
+    }
+    
+    function verArea() public view returns(uint){
+        return area;
+    }
+    
+    function destruir() public {
+        selfdestruct(payable(creador));
+    }
+    
+    
+}
